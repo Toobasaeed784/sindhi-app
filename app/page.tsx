@@ -13,14 +13,26 @@ export default function Home() {
     setInput("");
     setLoading(true);
 
-    // DUMMY response abhi — baad mein Sabiha ke real /ask se replace karenge
-    setTimeout(() => {
+    try {
+      const res = await fetch("https://naari-ai-production.up.railway.app/ask", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query: input, language: "sindhi" }),
+      });
+      const data = await res.json();
+
       setMessages((prev) => [
         ...prev,
-        { role: "assistant", text: "هي هڪ آزمائشي جواب آهي." },
+        { role: "assistant", text: data.answer },
       ]);
+    } catch (err) {
+      setMessages((prev) => [
+        ...prev,
+        { role: "assistant", text: "معاف ڪجو، ڪا خرابي آئي آهي." },
+      ]);
+    } finally {
       setLoading(false);
-    }, 1000);
+    }
   }
 
   return (
@@ -51,10 +63,4 @@ export default function Home() {
           style={{ flex: 1, padding: "10px", fontSize: "18px", textAlign: "right" }}
           placeholder="پنهنجو سوال لکو..."
         />
-        <button onClick={sendMessage} style={{ padding: "10px 20px", fontSize: "16px" }}>
-          موڪليو
-        </button>
-      </div>
-    </main>
-  );
-}
+        <button onClick={sendMessage} style={{ padding: "10px 20px",
