@@ -47,13 +47,12 @@ export default function Home() {
               padding: "10px",
               background: m.role === "user" ? "#e0f0ff" : "#f0f0f0",
               borderRadius: "8px",
-              color: "#000000",
             }}
           >
             {m.text}
           </div>
         ))}
-        {loading && <p style={{ color: "#ffffff" }}>...لکجي رهيو آهي</p>}
+        {loading && <p>...لکجي رهيو آهي</p>}
       </div>
 
       <div style={{ display: "flex", gap: "8px" }}>
@@ -61,29 +60,10 @@ export default function Home() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-          style={{
-            flex: 1,
-            padding: "10px",
-            fontSize: "18px",
-            textAlign: "right",
-            color: "#000000",
-            background: "#ffffff",
-            border: "1px solid #ccc",
-            borderRadius: "6px",
-          }}
+          style={{ flex: 1, padding: "10px", fontSize: "18px", textAlign: "right" }}
           placeholder="پنهنجو سوال لکو..."
         />
-        <button
-          onClick={sendMessage}
-          style={{
-            padding: "10px 20px",
-            fontSize: "16px",
-            background: "#2563eb",
-            color: "#ffffff",
-            border: "none",
-            borderRadius: "6px",
-          }}
-        >
+        <button onClick={sendMessage} style={{ padding: "10px 20px", fontSize: "16px" }}>
           موڪليو
         </button>
       </div>
