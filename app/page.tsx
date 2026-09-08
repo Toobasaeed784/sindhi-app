@@ -57,14 +57,33 @@ export default function Home() {
       </div>
 
       <div style={{ display: "flex", gap: "8px" }}>
-       <input
+        <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-          style={{ flex: 1, padding: "10px", fontSize: "18px", textAlign: "right", color: "#000000", background: "#ffffff" }}
+          style={{
+            flex: 1,
+            padding: "10px",
+            fontSize: "18px",
+            textAlign: "right",
+            color: "#000000",
+            background: "#ffffff",
+            border: "1px solid #ccc",
+            borderRadius: "6px",
+          }}
           placeholder="پنهنجو سوال لکو..."
         />
-        <button onClick={sendMessage} style={{ padding: "10px 20px", fontSize: "16px" }}>
+        <button
+          onClick={sendMessage}
+          style={{
+            padding: "10px 20px",
+            fontSize: "16px",
+            background: "#2563eb",
+            color: "#ffffff",
+            border: "none",
+            borderRadius: "6px",
+          }}
+        >
           موڪليو
         </button>
       </div>
